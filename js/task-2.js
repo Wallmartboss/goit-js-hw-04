@@ -1,17 +1,40 @@
-let message;
-let maxLength;
-function formatMessage(message, maxLength) {
-	let messNew;
-	if (message.length <= maxLength) {
-		return message;
+function calcAverageCalories(days) {
+	let averageCalories = 0;
+	let arrayCalories = [];
+	let qtyDays = 0;
+	for (const oneday of days) {
+		averageCalories += oneday.calories;
+		qtyDays += 1;
+	}
+	if (qtyDays !== 0) {
+		return averageCalories / qtyDays;
 	} else {
-		messNew = message.slice(0, maxLength);
-		return `${messNew}...`;
+		return 0;
 	}
 }
-console.log(formatMessage("Curabitur ligula sapien", 16)); // "Curabitur ligula..."
-console.log(formatMessage("Curabitur ligula sapien", 23)); // "Curabitur ligula sapien"
-console.log(formatMessage("Vestibulum facilisis purus nec", 20)); // "Vestibulum facilisis..."
-console.log(formatMessage("Vestibulum facilisis purus nec", 30)); // "Vestibulum facilisis purus nec"
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15)); // "Nunc sed turpis..."
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 41)); // "Nunc sed turpis a felis in nunc fringilla"
+
+console.log(
+	calcAverageCalories([
+		{ day: "monday", calories: 3010 },
+		{ day: "tuesday", calories: 3200 },
+		{ day: "wednesday", calories: 3120 },
+		{ day: "thursday", calories: 2900 },
+		{ day: "friday", calories: 3450 },
+		{ day: "saturday", calories: 3280 },
+		{ day: "sunday", calories: 3300 },
+	])
+); // 3180
+
+console.log(
+	calcAverageCalories([
+		{ day: "monday", calories: 2040 },
+		{ day: "tuesday", calories: 2270 },
+		{ day: "wednesday", calories: 2420 },
+		{ day: "thursday", calories: 1900 },
+		{ day: "friday", calories: 2370 },
+		{ day: "saturday", calories: 2280 },
+		{ day: "sunday", calories: 2610 },
+	])
+); // 2270
+
+console.log(calcAverageCalories([])); // 0
