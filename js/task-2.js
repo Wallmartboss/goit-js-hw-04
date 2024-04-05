@@ -1,13 +1,10 @@
 function calcAverageCalories(days) {
 	let averageCalories = 0;
-	let arrayCalories = [];
-	let qtyDays = 0;
 	for (const oneday of days) {
 		averageCalories += oneday.calories;
-		qtyDays += 1;
 	}
-	if (qtyDays !== 0) {
-		return averageCalories / qtyDays;
+	if (days.length !== 0) {
+		return averageCalories / days.length;
 	} else {
 		return 0;
 	}
